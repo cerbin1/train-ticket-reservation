@@ -1,6 +1,16 @@
-nav {
-    border: 1px solid black;
-    text-align: center;
-    padding: 2rem;
-    border-radius: 8px;
+* {
+  margin: 0;
 }
+
+main {
+  font-size: 16px;
+}
+
+.container {
+    background-image: url("hero.jpg");
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+    opacity: 0.75;
+}
+
