@@ -11,7 +11,25 @@
   </head>
   <body>
     <main>
-      <div class="container"></div>
+      <div class="container">
+        <div class="form">
+          <h1>Wyszukaj trasę</h1>
+          <form id="search-form">
+            <label for="start-station">Stacja początkowa:</label>
+            <input
+              type="text"
+              id="start-station"
+              name="start-station"
+              required
+            />
+
+            <label for="end-station">Stacja końcowa:</label>
+            <input type="text" id="end-station" name="end-station" required />
+
+            <button class="button" type="submit">Szukaj</button>
+          </form>
+        </div>
+      </div>
     </main>
   </body>
 </html>
