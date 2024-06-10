@@ -6,8 +6,15 @@
     <title>Wyszukiwarka Połączeń Kolejowych</title>
 
     <link rel="stylesheet" href="style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css"
+    />
 
     <script src="script.js" async></script>
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr" async></script>
+    <script src="https://npmcdn.com/flatpickr/dist/flatpickr.min.js"></script>
+    <script src="https://npmcdn.com/flatpickr/dist/l10n/pl.js"></script>
   </head>
   <body>
     <main>
@@ -31,10 +38,26 @@
               <input type="text" id="end-station" name="end-station" required />
             </div>
 
+            <label for="datetime-picker">Data:</label>
+            <input id="datetime-picker" placeholder="Wybierz dzień i godzinę" required />
+
             <button class="button" type="submit">Szukaj</button>
           </form>
         </div>
       </div>
     </main>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        flatpickr("#datetime-picker", {
+          enableTime: true,
+          allowInput: true,
+          time_24hr: true,
+          dateFormat: "Y-m-d-l H:i",
+          minDate: "today",
+          locale: "pl",
+        });
+      });
+    </script>
   </body>
 </html>

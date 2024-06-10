@@ -107,70 +107,72 @@ const stations = [
   "Żory",
   "Żyrardów",
 ];
+window.onload = function () {
+  let startStationInput = document.getElementById("start-station");
+  let endStationInput = document.getElementById("end-station");
+  console.log(startStationInput);
 
-let startStationInput = document.getElementById("start-station");
-let endStationInput = document.getElementById("end-station");
+  addAutocompleteTo(startStationInput);
+  addAutocompleteTo(endStationInput);
 
-addAutocompleteTo(startStationInput);
-addAutocompleteTo(endStationInput);
-
-function closeSuggestionList() {
-  const autocompleteLists =
-    document.getElementsByClassName("autocomplete-items");
-  for (let nextList of autocompleteLists) {
-    nextList.parentNode.removeChild(nextList);
-  }
-}
-
-document.addEventListener("click", function (e) {
-  closeSuggestionList();
-});
-
-function addAutocompleteTo(input) {
-  input.addEventListener("input", function () {
-    closeSuggestionList();
-    const userInput = this.value;
-    if (!userInput) {
-      return false;
+  function closeSuggestionList() {
+    const autocompleteLists =
+      document.getElementsByClassName("autocomplete-items");
+    for (let nextList of autocompleteLists) {
+      nextList.parentNode.removeChild(nextList);
     }
-    const autocompleteContainer = document.createElement("div");
-    autocompleteContainer.setAttribute("id", this.id + "autocomplete-list");
-    autocompleteContainer.setAttribute("class", "autocomplete-items");
-    this.parentNode.appendChild(autocompleteContainer);
-    addAutocompleteSuggestionsToContainer(autocompleteContainer, userInput);
+  }
+
+  document.addEventListener("click", function (e) {
+    closeSuggestionList();
   });
 
-  function addAutocompleteSuggestionsToContainer(container, userInput) {
-    for (let i = 0; i < stations.length; i++) {
-      const stationName = stations[i];
-      if (nameStartsWithUserInput(stationName, userInput)) {
-        const autocompleteSuggestion = document.createElement("div");
-        autocompleteSuggestion.innerHTML += suggesionNameWithHiddenInputValue(
-          userInput,
-          stationName
-        );
-        autocompleteSuggestion.addEventListener("click", function (e) {
-          input.value = this.getElementsByTagName("input")[0].value;
-          closeSuggestionList();
-        });
-        container.appendChild(autocompleteSuggestion);
+  function addAutocompleteTo(input) {
+    input.addEventListener("input", function () {
+      closeSuggestionList();
+      const userInput = this.value;
+      if (!userInput) {
+        return false;
+      }
+      const autocompleteContainer = document.createElement("div");
+      autocompleteContainer.setAttribute("id", this.id + "autocomplete-list");
+      autocompleteContainer.setAttribute("class", "autocomplete-items");
+      this.parentNode.appendChild(autocompleteContainer);
+      addAutocompleteSuggestionsToContainer(autocompleteContainer, userInput);
+    });
+
+    function addAutocompleteSuggestionsToContainer(container, userInput) {
+      for (let i = 0; i < stations.length; i++) {
+        const stationName = stations[i];
+        if (nameStartsWithUserInput(stationName, userInput)) {
+          const autocompleteSuggestion = document.createElement("div");
+          autocompleteSuggestion.innerHTML += suggesionNameWithHiddenInputValue(
+            userInput,
+            stationName
+          );
+          autocompleteSuggestion.addEventListener("click", function (e) {
+            input.value = this.getElementsByTagName("input")[0].value;
+            closeSuggestionList();
+          });
+          container.appendChild(autocompleteSuggestion);
+        }
       }
     }
-  }
 
-  function suggesionNameWithHiddenInputValue(userInput, stationName) {
-    return (
-      "<strong>" +
-      stationName.slice(0, userInput.length) +
-      "</strong>" +
-      stationName.slice(userInput.length) +
-      "<input type='hidden' value='" +
-      stationName +
-      "'>"
-    );
-  }
+    function suggesionNameWithHiddenInputValue(userInput, stationName) {
+      return (
+        "<strong>" +
+        stationName.slice(0, userInput.length) +
+        "</strong>" +
+        stationName.slice(userInput.length) +
+        "<input type='hidden' value='" +
+        stationName +
+        "'>"
+      );
+    }
 
-  function nameStartsWithUserInput(stationName, value) {
-    return stationName.toUpperCase().startsWith(value.toUpperCase());
+    function nameStartsWithUserInput(stationName, value) {
+      return stationName.toUpperCase().startsWith(value.toUpperCase());
+    }
   }
-}
+};
