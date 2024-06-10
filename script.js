@@ -107,10 +107,85 @@ const stations = [
   "Żory",
   "Żyrardów",
 ];
+
+const MIN_NUMBER_OF_HOURS = 3;
+const MAX_NUMBER_OF_HOURS = 10;
+
 window.onload = function () {
   let startStationInput = document.getElementById("start-station");
   let endStationInput = document.getElementById("end-station");
-  console.log(startStationInput);
+
+  const submitForm = document.getElementById("submit-form");
+  submitForm.addEventListener("submit", function (event) {
+    event.preventDefault();
+    document.getElementById("search-form").style.display = "none";
+    document.getElementById("results").style.display = "block";
+
+    const startStationInputValue = startStationInput.value;
+    const endStationInputValue = endStationInput.value;
+    const datetimeInputValue = flatpickr("#datetime-picker", {})
+      .selectedDates[0];
+    const date =
+      datetimeInputValue.getDate() +
+      "-" +
+      (datetimeInputValue.getMonth() < 9 ? "0" : "") +
+      (datetimeInputValue.getMonth() + 1) +
+      "-" +
+      datetimeInputValue.getFullYear();
+    const time = datetimeInputValue.toLocaleTimeString("pl-PL");
+
+    const resultsDiv = document.getElementById("results");
+
+    for (let i = 0; i < 5; i++) {
+      const resultDiv = document.createElement("div");
+      resultDiv.className = "result";
+
+      const detailsDiv = document.createElement("div");
+      detailsDiv.classList.add("result-details");
+
+      const stationsNamesTitle = document.createElement("h2");
+      stationsNamesTitle.textContent = `${startStationInputValue} -> ${endStationInputValue}`;
+      detailsDiv.appendChild(stationsNamesTitle);
+
+      const departureDate = document.createElement("p");
+      departureDate.textContent = `Data: ${date}`;
+      detailsDiv.appendChild(departureDate);
+
+      const departureTime = document.createElement("p");
+      departureTime.textContent = `Godzina odjazdu: 12:34`;
+      detailsDiv.appendChild(departureTime);
+
+      const arrivalTime = document.createElement("p");
+      arrivalTime.textContent = `Godzina przyjazdu: 14:23`;
+      detailsDiv.appendChild(arrivalTime);
+
+      const duration = document.createElement("p");
+      const randomDuration =
+        Math.floor(
+          Math.random() * (MAX_NUMBER_OF_HOURS - MIN_NUMBER_OF_HOURS)
+        ) + MIN_NUMBER_OF_HOURS;
+      duration.textContent = `Czas trwania: ${randomDuration} h`;
+      detailsDiv.appendChild(duration);
+
+      const detailsButton = document.createElement("a");
+      detailsButton.textContent = "Szczegóły";
+      detailsButton.classList.add("details-button");
+
+      detailsButton.addEventListener("click", () => {
+        alert(`TODO`);
+      });
+
+      resultDiv.appendChild(detailsDiv);
+      resultDiv.appendChild(detailsButton);
+
+      resultsDiv.appendChild(resultDiv);
+    }
+  });
+
+  backToMenuButton.addEventListener("click", () => {
+    document.getElementById("search-form").style.display = "block";
+    document.getElementById("results").style.display = "none";
+  });
 
   addAutocompleteTo(startStationInput);
   addAutocompleteTo(endStationInput);

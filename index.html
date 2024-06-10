@@ -12,16 +12,13 @@
     />
 
     <script src="script.js" async></script>
-    <script src="https://cdn.jsdelivr.net/npm/flatpickr" async></script>
-    <script src="https://npmcdn.com/flatpickr/dist/flatpickr.min.js"></script>
-    <script src="https://npmcdn.com/flatpickr/dist/l10n/pl.js"></script>
   </head>
   <body>
     <main>
       <div class="container">
-        <div class="form">
+        <div class="form" id="search-form">
           <h1>Wyszukaj trasę</h1>
-          <form id="search-form">
+          <form id="submit-form">
             <label for="start-station">Stacja początkowa:</label>
 
             <div class="autocomplete">
@@ -29,29 +26,48 @@
                 type="text"
                 id="start-station"
                 name="start-station"
+                value="Kraków"
                 required
               />
             </div>
 
             <label for="end-station">Stacja końcowa:</label>
             <div class="autocomplete">
-              <input type="text" id="end-station" name="end-station" required />
+              <input
+                type="text"
+                id="end-station"
+                name="end-station"
+                value="Warszawa"
+                required
+              />
             </div>
 
             <label for="datetime-picker">Data:</label>
-            <input id="datetime-picker" placeholder="Wybierz dzień i godzinę" required />
+            <input
+              type="text"
+              id="datetime-picker"
+              placeholder="Wybierz dzień i godzinę"
+              value="today"
+              required
+            />
 
             <button class="button" type="submit">Szukaj</button>
           </form>
         </div>
+        <div id="results">
+          <span id="backToMenuButton" class="back">Powrót do wyszukiwania</span>
+          <h1>Wyniki wyszukiwania</h1>
+        </div>
       </div>
     </main>
 
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <script src="https://npmcdn.com/flatpickr/dist/flatpickr.min.js"></script>
+    <script src="https://npmcdn.com/flatpickr/dist/l10n/pl.js"></script>
     <script>
       document.addEventListener("DOMContentLoaded", function () {
         flatpickr("#datetime-picker", {
           enableTime: true,
-          allowInput: true,
           time_24hr: true,
           dateFormat: "Y-m-d-l H:i",
           minDate: "today",
