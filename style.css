@@ -97,7 +97,7 @@ main {
   background-color: #e9e9e9;
 }
 
-#datetime-picker {
+.flatpickr-input {
   padding: 10px;
   font-size: 16px;
   width: 250px;

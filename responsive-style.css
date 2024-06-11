@@ -1,0 +1,25 @@
+@media screen and (max-width: 800px) {
+  body {
+    background-color: #00002f;
+  }
+
+  .container::before {
+    background-image: none;
+  }
+
+  #results {
+    top: 5%;
+  }
+
+  .back {
+    position: relative;
+    display: block;
+    margin: 0 auto;
+    left: 0;
+    margin: 0 1rem;
+  }
+
+  .result {
+    flex-direction: column;
+  }
+}
