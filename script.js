@@ -172,7 +172,7 @@ window.onload = function () {
       detailsButton.classList.add("details-button");
 
       detailsButton.addEventListener("click", () => {
-        alert(`TODO`);
+        window.location.href = "./details.html";
       });
 
       resultDiv.appendChild(detailsDiv);

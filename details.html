@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="pl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Wyszukiwarka Połączeń Kolejowych</title>
+
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="responsive-style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css"
+    />
+
+    <script>
+      window.onload = function () {
+        const showStationsButton = document.getElementById("show-stations");
+        showStationsButton.addEventListener("click", function () {
+          document.getElementById("stations-list").style.display = "block";
+          showStationsButton.style.display = "none";
+        });
+      };
+    </script>
+  </head>
+  <body>
+    <main>
+      <div class="container">
+        <div class="details">
+          <h1>Szczegóły połączenia: Kraków -> Warszawa</h1>
+          <div class="section">
+            <p><strong>Stacja początkowa: </strong>Kraków Główny</p>
+            <p><strong>Stacja końcowa: </strong>Warszawa Centralna</p>
+          </div>
+
+          <div>
+            <p><strong>Data: </strong>15.06.2024 Sobota</p>
+            <table>
+              <tr>
+                <th>Odjazd</th>
+                <th>Przyjazd</th>
+                <th>Czas podróży</th>
+              </tr>
+              <tr>
+                <td>08:00</td>
+                <td>10:30</td>
+                <td>2h 30m</td>
+              </tr>
+            </table>
+          </div>
+
+          <div class="section">
+            <h3>Lista stacji pośrednich</h3>
+            <a
+              class="show-route"
+              target="_blank"
+              href="https://www.google.com/maps/dir/Krak%C3%B3w+G%C5%82%C3%B3wny,+Pawia,+Krak%C3%B3w/Warszawa+Centralna,+al.+Jerozolimskie+54,+00-019+Warszawa/@51.1429244,19.1558402,8z/data=!3m1!4b1!4m14!4m13!1m5!1m1!1s0x47165b1ba87d805f:0x5ef9b413cd3918e2!2m2!1d19.9474928!2d50.0683947!1m5!1m1!1s0x471ecc8d65233559:0xeb0bc9f267c74ed9!2m2!1d21.00327!2d52.22884!3e3?entry=ttu"
+              >Pokaż trasę na mapie</a
+            >
+            <button id="show-stations" class="button">Wyświetl</button>
+
+            <ul id="stations-list" class="stations">
+              <li>Kraków Główny</li>
+              <li>Miechów</li>
+              <li>Włoszczowa Północ</li>
+              <li>Opoczno Południe</li>
+              <li>Warszawa Centralna</li>
+            </ul>
+          </div>
+
+          <div class="section">
+            <h3>Cena biletu (bez zniżek)</h3>
+            <p><strong>1 klasa: </strong>80 PLN</p>
+            <p><strong>2 klasa: </strong>50 PLN</p>
+          </div>
+          <div>
+            <h3>Usługi na pokładzie</h3>
+            <p>Wi-Fi, Catering, Udogodnienia dla osób niepełnosprawnych</p>
+          </div>
+          <div class="details-buttons-container">
+            <a href="index.html" class="details-buttons-back">Powrót</a>
+            <a class="details-buttons-accept">Przejdź do rezerwacji</a>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <script src="https://npmcdn.com/flatpickr/dist/flatpickr.min.js"></script>
+    <script src="https://npmcdn.com/flatpickr/dist/l10n/pl.js"></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        flatpickr("#datetime-picker", {
+          enableTime: true,
+          time_24hr: true,
+          dateFormat: "Y-m-d-l H:i",
+          minDate: "today",
+          locale: "pl",
+        });
+      });
+    </script>
+  </body>
+</html>

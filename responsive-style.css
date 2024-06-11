@@ -22,4 +22,21 @@
   .result {
     flex-direction: column;
   }
+
+  .details table {
+    overflow: scroll;
+  }
+
+  .details {
+    max-width: 100%;
+  }
+
+  .stations {
+    width: 70%;
+  }
+
+  .details-buttons-accept {
+    font-size: 1rem;
+    padding: 1rem;
+  }
 }
