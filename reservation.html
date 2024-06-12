@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="pl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Rezerwacja biletu</title>
+
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="responsive-style.css" />
+  </head>
+  <body>
+    <main>
+      <div class="container">
+        <div class="reservation">
+          <h1>Rezerwacja biletu na połączenie: Kraków -> Warszawa</h1>
+          <div class="section">
+            <p><strong>Stacja początkowa: </strong>Kraków Główny</p>
+            <p><strong>Stacja końcowa: </strong>Warszawa Centralna</p>
+            <p><strong>Data odjazdu: </strong>15.06.2024 08:00</p>
+            <p><strong>Data przyjazdu: </strong>15.06.2024 10:30</p>
+          </div>
+
+          <div>
+            <section class="ticket-class">
+              <h2>Wybór klasy</h2>
+              <div id="class1" class="ticket-class-type">1 klasa</div>
+              <div
+                id="class2"
+                class="ticket-class-type ticket-class-type-active"
+              >
+                2 klasa
+              </div>
+            </section>
+            <h2>Wybór biletów</h2>
+            <section>
+              <h3>Bilet normalny - <span id="normal-ticket"></span></h3>
+              <label for="normal-ticket-count">Wybierz liczbę:</label>
+              <select class="ticket-count-select" id="normal-ticket-count">
+                <option value="0">0</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+                <option value="9">9</option>
+                <option value="10">10</option>
+              </select>
+            </section>
+
+            <section>
+              <h3>Bilet ulgowy - <span id="reduced-ticket"></span></h3>
+              <label for="reduced-ticket-count">Wybierz liczbę:</label>
+              <select class="ticket-count-select" id="reduced-ticket-count">
+                <option value="0">0</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+                <option value="9">9</option>
+                <option value="10">10</option>
+              </select>
+            </section>
+
+            <p class="section">
+              <strong>Suma: </strong><span id="tickets-price"></span>
+            </p>
+          </div>
+
+          <div class="reservation-buttons-container">
+            <a href="details.html" class="reservation-buttons-back">Powrót</a>
+            <a id="goToReservationSummary" class="reservation-buttons-accept"
+              >Przejdź do podsumowania płatności</a
+            >
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <script>
+      let normalTicketPrice = 50;
+      let reducedTicketPrice = 25;
+
+      const classTypes = document.getElementsByClassName("ticket-class-type");
+      class1.addEventListener("click", () => {
+        setActive(class1);
+        normalTicketPrice = 80;
+        reducedTicketPrice = 40;
+        changeTicketClassType();
+      });
+      class2.addEventListener("click", () => {
+        setActive(class2);
+        normalTicketPrice = 50;
+        reducedTicketPrice = 25;
+        changeTicketClassType();
+      });
+      const ticketsPrice = document.getElementById("tickets-price");
+      const normalTicketCount = document.getElementById("normal-ticket-count");
+      const reducedTicketCount = document.getElementById(
+        "reduced-ticket-count"
+      );
+      normalTicketCount.addEventListener("change", () => {
+        updatePricesTotal();
+      });
+      reducedTicketCount.addEventListener("change", () => {
+        updatePricesTotal();
+      });
+
+      function updatePricesTotal() {
+        ticketsPrice.innerHTML =
+          normalTicketCount.value * normalTicketPrice +
+          reducedTicketCount.value * reducedTicketPrice +
+          " PLN";
+      }
+      function setActive(classElement) {
+        for (element of classTypes) {
+          element.classList.remove("ticket-class-type-active");
+        }
+        classElement.classList.add("ticket-class-type-active");
+      }
+
+      changeTicketClassType();
+
+      function changeTicketClassType() {
+        document.getElementById("normal-ticket").innerHTML =
+          normalTicketPrice + " PLN";
+        document.getElementById("reduced-ticket").innerHTML =
+          reducedTicketPrice + " PLN";
+        normalTicketCount.value = 0;
+        reducedTicketCount.value = 0;
+        ticketsPrice.innerHTML = "-";
+      }
+
+      goToReservationSummary.addEventListener("click", () => {
+        if (normalTicketCount.value == 0 && reducedTicketCount.value == 0) {
+          alert("Nie wybrano żadnego biletu!");
+          return;
+        }
+        window.location.href = "summary.html";
+      });
+    </script>
+  </body>
+</html>

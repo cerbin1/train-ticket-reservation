@@ -7,10 +7,6 @@
 
     <link rel="stylesheet" href="style.css" />
     <link rel="stylesheet" href="responsive-style.css" />
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css"
-    />
 
     <script>
       window.onload = function () {
@@ -78,25 +74,10 @@
           </div>
           <div class="details-buttons-container">
             <a href="index.html" class="details-buttons-back">Powrót</a>
-            <a class="details-buttons-accept">Przejdź do rezerwacji</a>
+            <a href="reservation.html" class="details-buttons-accept">Przejdź do rezerwacji</a>
           </div>
         </div>
       </div>
     </main>
-
-    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
-    <script src="https://npmcdn.com/flatpickr/dist/flatpickr.min.js"></script>
-    <script src="https://npmcdn.com/flatpickr/dist/l10n/pl.js"></script>
-    <script>
-      document.addEventListener("DOMContentLoaded", function () {
-        flatpickr("#datetime-picker", {
-          enableTime: true,
-          time_24hr: true,
-          dateFormat: "Y-m-d-l H:i",
-          minDate: "today",
-          locale: "pl",
-        });
-      });
-    </script>
   </body>
 </html>

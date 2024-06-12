@@ -23,10 +23,6 @@
     flex-direction: column;
   }
 
-  .details table {
-    overflow: scroll;
-  }
-
   .details {
     max-width: 100%;
   }
@@ -38,5 +34,20 @@
   .details-buttons-accept {
     font-size: 1rem;
     padding: 1rem;
+  }
+
+  .reservation {
+    max-width: 100%;
+  }
+
+  .reservation-buttons-back {
+    display: inline-flex;
+    align-items: center;
+  }
+
+  .reservation-buttons-accept {
+    font-size: 1rem;
+    padding: 1rem;
+    margin-left: 2rem;
   }
 }
