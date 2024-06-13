@@ -119,7 +119,8 @@ window.onload = function () {
   submitForm.addEventListener("submit", function (event) {
     event.preventDefault();
     document.getElementById("search-form").style.display = "none";
-    document.getElementById("results").style.display = "block";
+    document.getElementsByClassName("results-container")[0].style.display =
+      "block";
 
     const startStationInputValue = startStationInput.value;
     const endStationInputValue = endStationInput.value;
@@ -184,7 +185,9 @@ window.onload = function () {
 
   backToMenuButton.addEventListener("click", () => {
     document.getElementById("search-form").style.display = "block";
-    document.getElementById("results").style.display = "none";
+    document.getElementById("results").innerHTML = "";
+    document.getElementsByClassName("results-container")[0].style.display =
+      "none";
   });
 
   addAutocompleteTo(startStationInput);
@@ -201,6 +204,14 @@ window.onload = function () {
   document.addEventListener("click", function (e) {
     closeSuggestionList();
   });
+
+  function removeExistingResults(results) {
+    for (let result of results.getElementsByClassName("result")) {
+      console.log(result);
+      console.log("remove");
+      result.remove();
+    }
+  }
 
   function addAutocompleteTo(input) {
     input.addEventListener("input", function () {

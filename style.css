@@ -104,7 +104,7 @@ main {
   cursor: pointer;
 }
 
-#results {
+.results-container {
   display: none;
   top: 20%;
   position: relative;
@@ -115,7 +115,7 @@ main {
   border-radius: 8px;
 }
 
-#results h1 {
+.results-container h1 {
   text-align: center;
   cursor: default;
   padding: 1rem;
