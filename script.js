@@ -205,14 +205,6 @@ window.onload = function () {
     closeSuggestionList();
   });
 
-  function removeExistingResults(results) {
-    for (let result of results.getElementsByClassName("result")) {
-      console.log(result);
-      console.log("remove");
-      result.remove();
-    }
-  }
-
   function addAutocompleteTo(input) {
     input.addEventListener("input", function () {
       closeSuggestionList();
