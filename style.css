@@ -234,12 +234,13 @@ main {
   color: #f2652a;
 }
 
-.details-buttons-container {
+.buttons-container {
   display: flex;
   justify-content: space-between;
+  margin-top: 1rem;
 }
 
-.details-buttons-back {
+.button-back {
   background-color: #3a91c3;
   padding: 1rem;
   color: #00002f;
@@ -248,14 +249,14 @@ main {
   text-decoration: none;
 }
 
-.details-buttons-back:hover {
+.button-back:hover {
   color: #00002f;
   background-color: #fff;
   box-shadow: 0 0 5px 0 #00002f;
   border: 1px solid #00002f;
 }
 
-.details-buttons-accept {
+.button-accept {
   background-color: #f2652a;
   cursor: pointer;
   padding: 1rem 3rem;
@@ -265,7 +266,7 @@ main {
   color: #00002f;
 }
 
-.details-buttons-accept:hover {
+.button-accept:hover {
   background-color: #3a91c3;
   color: #fff;
 }
@@ -346,3 +347,54 @@ main {
   background-color: #3a91c3;
   color: #fff;
 }
+
+.tickets-price {
+  list-style-type: square;
+  color: #3a91c3;
+}
+
+.tickets-price li span {
+  color: #00002f;
+}
+
+/*** toast start ***/
+.toast {
+  visibility: hidden;
+  max-width: 50%;
+  margin: 0 auto;
+  background-color: #3a91c3;
+  color: #fff;
+  border-radius: 5px;
+  padding: 2rem 1rem;
+  font-size: 2rem;
+  font-weight: 500;
+  position: fixed;
+  bottom: 50%;
+  left: 0;
+  right: 0;
+  z-index: 1;
+}
+
+.toast.show {
+  visibility: visible;
+  animation: fadein 0.5s, fadeout 0.5s 2.5s;
+}
+
+@keyframes fadein {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 0.9;
+  }
+}
+
+@keyframes fadeout {
+  from {
+    opacity: 0.9;
+  }
+  to {
+    opacity: 0;
+  }
+}
+/*** toast end ***/

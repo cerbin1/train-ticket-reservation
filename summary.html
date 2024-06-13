@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="pl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Podsumowanie rezerwacji i płatność</title>
+
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="responsive-style.css" />
+  </head>
+  <body>
+    <main>
+      <div class="container">
+        <div class="reservation">
+          <h1>Podsumowanie połączenia: Kraków -> Warszawa</h1>
+          <div class="section">
+            <h2>Szczegóły</h2>
+            <p><strong>Stacja początkowa: </strong>Kraków Główny</p>
+            <p><strong>Stacja końcowa: </strong>Warszawa Centralna</p>
+            <p><strong>Data odjazdu: </strong>15.06.2024 08:00</p>
+            <p><strong>Data przyjazdu: </strong>15.06.2024 10:30</p>
+            <p><strong>Czas podróży: </strong>2h 30m</p>
+            <p><strong>Typ klasy: </strong>2 klasa</p>
+          </div>
+
+          <div class="section">
+            <h2>Bilety</h2>
+            <p><strong>Bilety normalne: </strong>2</p>
+            <p><strong>Bilety ulgowe: </strong>3</p>
+            <strong>Cena: </strong>
+            <ul class="tickets-price">
+              <li><span>2 * 50 PLN = 100 PLN</span></li>
+              <li><span>3 * 25 PLN = 75 PLN</span></li>
+            </ul>
+            <p><strong>Suma: </strong>175 PLN</p>
+          </div>
+          <div id="toast" class="toast">Bilety opłacone.</div>
+
+          <div class="buttons-container">
+            <a href="reservation.html" class="button-back">Powrót</a>
+            <a id="payment-button" class="button-accept">Opłać bilety</a>
+          </div>
+        </div>
+      </div>
+    </main>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        document
+          .getElementById("payment-button")
+          .addEventListener("click", () => {
+            var toast = document.getElementById("toast");
+            toast.className = "toast show";
+            setTimeout(function () {
+              toast.className = toast.className.replace("show", "");
+            }, 3000);
+          });
+      });
+    </script>
+  </body>
+</html>
