@@ -1,74 +1,13 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="pl">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Wyszukiwarka Połączeń Kolejowych</title>
-
-    <link rel="stylesheet" href="style.css" />
-    <link rel="stylesheet" href="responsive-style.css" />
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css"
-    />
-
-    <script src="script.js" defer></script>
+    <meta name="theme-color" content="#f4f1e9" />
+    <title>Peron — rezerwacja podróży</title>
   </head>
   <body>
-    <main>
-      <div class="container">
-        <div class="form" id="search-form">
-          <h1>Wyszukaj trasę</h1>
-          <form id="submit-form">
-            <label for="start-station">Stacja początkowa:</label>
-
-            <div class="autocomplete">
-              <input
-                type="text"
-                id="start-station"
-                name="start-station"
-                required
-              />
-            </div>
-
-            <label for="end-station">Stacja końcowa:</label>
-            <div class="autocomplete">
-              <input type="text" id="end-station" name="end-station" required />
-            </div>
-
-            <label for="datetime-picker">Data:</label>
-            <input
-              type="text"
-              id="datetime-picker"
-              placeholder="Wybierz dzień i godzinę"
-              value="today"
-              required
-            />
-
-            <button class="button" type="submit">Szukaj</button>
-          </form>
-        </div>
-        <div class="results-container">
-          <span id="backToMenuButton" class="back">Powrót do wyszukiwania</span>
-          <h1>Wyniki wyszukiwania</h1>
-          <div id="results"></div>
-        </div>
-      </div>
-    </main>
-
-    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
-    <script src="https://npmcdn.com/flatpickr/dist/flatpickr.min.js"></script>
-    <script src="https://npmcdn.com/flatpickr/dist/l10n/pl.js"></script>
-    <script>
-      document.addEventListener("DOMContentLoaded", function () {
-        flatpickr("#datetime-picker", {
-          enableTime: true,
-          time_24hr: true,
-          dateFormat: "Y-m-d-l H:i",
-          minDate: "today",
-          locale: "pl",
-        });
-      });
-    </script>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>
