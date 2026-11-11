@@ -19,12 +19,12 @@
     "react-router-dom": "latest"
   },
   "devDependencies": {
+    "vite": "^7.3.0",
     "@vitejs/plugin-react": "^5.2.0",
     "@types/react": "latest",
     "@types/react-dom": "latest",
     "prettier": "^3.9.10",
-    "typescript": "latest",
-    "vite": "^7.3.0"
+    "typescript": "latest"
   },
   "overrides": {
     "vite": {
