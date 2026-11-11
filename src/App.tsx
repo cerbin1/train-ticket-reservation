@@ -16,11 +16,11 @@ export function App() {
   }, [language]);
   useEffect(() => {
     Promise.all([
-      fetch("/data/cities.json").then((r) => {
+      fetch("./data/cities.json").then((r) => {
         if (!r.ok) throw Error();
         return r.json();
       }),
-      fetch("/data/trips.json").then((r) => {
+      fetch("./data/trips.json").then((r) => {
         if (!r.ok) throw Error();
         return r.json();
       }),
