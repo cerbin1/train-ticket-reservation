@@ -6,7 +6,8 @@ export default defineConfig({
   base: "./",
   plugins: [react()],
   build: {
-    outDir: "~/domains/portfolio.skr.smallhost.pl/public_html/train-ticket-reservation",
+    outDir:
+      "/home/skr/domains/portfolio.skr.smallhost.pl/public_html/train-ticket-reservation",
     emptyOutDir: true,
   },
 });
