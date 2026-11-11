@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { BrowserRouter, Link, Route, Routes } from "react-router-dom";
+import { HashRouter, Link, Route, Routes } from "react-router-dom";
 import { Booking, Details, SavedTrips, Search, Summary } from "./pages";
 import type { Trip } from "./types";
 import { useLanguage } from "./i18n";
@@ -36,7 +36,7 @@ export function App() {
       );
   }, []);
   return (
-    <BrowserRouter>
+    <HashRouter>
       <header>
         <Link className="brand" to="/">
           <b>↗</b> peron<span>.</span>
@@ -90,6 +90,6 @@ export function App() {
           <Link to="/">{tr("Wyszukaj połączenie ↑", "Search trains ↑")}</Link>
         </footer>
       </main>
-    </BrowserRouter>
+    </HashRouter>
   );
 }
